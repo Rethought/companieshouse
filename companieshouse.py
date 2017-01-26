@@ -37,6 +37,10 @@ class CompaniesHouseClient(object):
 
         @todo: lots, but crucially raise CompanyNotFoundError if so
         """
+
+        # Number needs to be 8 digits, zero padded for companies house.
+        # Accommodate argument being either string or integer
+        company_number = "{}".format(company_number).zfill(8)
         return Company(self._request('company/{}'.format(company_number)))
 
 
